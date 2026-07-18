@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Courses{% endblock %}
+
+{% block content %}
+<table class="table mt-5 table-bordered table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Students Quantity</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in course %}
+            <tr>
+                {% comment %} <td><a href="{{ i.id }}">{{ i.title }}</a></td> {% endcomment %}
+                <td>
+                    <a href={% url "shop:single_course" i.id  %}>
+                        {{ i.title }}
+                    </a>
+                </td>
+
+                <td>{{ i.category }}</td>
+                <td>{{ i.price }}</td>
+                <td>{{ i.students }}</td>
+                <td><button class="btn btn-primary">Buy</button></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
